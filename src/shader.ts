@@ -22,6 +22,7 @@ uniform float u_time;
 uniform vec2 u_mouse;      // px, smoothed
 uniform float u_mouseAmp;  // 0..1 ripple energy
 uniform float u_scroll;    // 0..1 across hero scroll
+uniform float u_calm;      // 1 = full ambience, <1 = dampened (reduced motion)
 
 float hash(vec2 p) {
   return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -69,7 +70,7 @@ void main() {
   vec2 flow = vec2(0.0, u_time * 0.32);
   float n = fbm(uv * 7.0 + flow);
   vec2 haze = vec2(n - 0.5, fbm(uv * 7.0 + flow + 4.7) - 0.5);
-  vec2 warp = haze * (0.0035 + heat * 0.016);
+  vec2 warp = haze * (0.0035 + heat * 0.016) * u_calm;
 
   // cursor ripple
   vec2 m = u_mouse / u_res;
@@ -88,10 +89,10 @@ void main() {
   vec2 cuv = fract(gp + vec2(0.0, -u_time * 6.0)) - 0.5;
   float spark = smoothstep(0.12, 0.0, length(cuv + (vec2(h, hash(cell + 9.1)) - 0.5) * 0.6));
   float twinkle = step(0.986, h) * (0.55 + 0.45 * sin(u_time * 9.0 + h * 40.0));
-  col += vec3(0.62, 0.95, 0.25) * spark * twinkle * heat * 1.7;
+  col += vec3(0.62, 0.95, 0.25) * spark * twinkle * heat * 1.7 * u_calm;
 
   // molten breathing glow
-  float pulse = 0.92 + 0.08 * sin(u_time * 1.6 + uv.x * 3.0);
+  float pulse = 0.92 + 0.08 * sin(u_time * 1.6 + uv.x * 3.0) * u_calm;
   col += vec3(0.30, 0.62, 0.10) * heat * 0.20 * pulse;
 
   // cursor hotspot lift
@@ -113,7 +114,7 @@ export interface FurnaceHandle {
 export function mountFurnace(
   canvas: HTMLCanvasElement,
   img: HTMLImageElement,
-  opts: { animate: boolean }
+  opts: { animate: boolean; calm?: number }
 ): FurnaceHandle | null {
   const gl = canvas.getContext("webgl", {
     antialias: false,
@@ -157,9 +158,11 @@ export function mountFurnace(
 
   const U = (n: string) => gl.getUniformLocation(prog, n);
   const uRes = U("u_res"), uTexRes = U("u_texRes"), uTime = U("u_time"),
-    uMouse = U("u_mouse"), uAmp = U("u_mouseAmp"), uScroll = U("u_scroll");
+    uMouse = U("u_mouse"), uAmp = U("u_mouseAmp"), uScroll = U("u_scroll"),
+    uCalm = U("u_calm");
 
   gl.uniform2f(uTexRes, img.naturalWidth, img.naturalHeight);
+  gl.uniform1f(uCalm, opts.calm ?? 1);
 
   let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 1.75);
   function resize() {

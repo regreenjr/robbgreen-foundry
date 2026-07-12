@@ -4,3 +4,4 @@ generated/
 .vercel/
 .DS_Store
 *.log
+.vercel

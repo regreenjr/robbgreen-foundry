@@ -38,8 +38,14 @@ let furnace: FurnaceHandle | null = null;
 const heroImg = document.getElementById("heroImg") as HTMLImageElement;
 const heroCanvas = document.getElementById("heroCanvas") as HTMLCanvasElement;
 
+/* The liquid layer (haze, embers, ripple) is ambient and contained, so it
+   always runs; reduced-motion gets it dampened. Only the big moves
+   (pin, parallax, choreography) are gated on reduceMotion below. */
 function bootShader() {
-  furnace = mountFurnace(heroCanvas, heroImg, { animate: !reduceMotion });
+  furnace = mountFurnace(heroCanvas, heroImg, {
+    animate: true,
+    calm: reduceMotion ? 0.55 : 1,
+  });
   if (furnace) heroImg.style.visibility = "hidden";
 }
 if (heroImg.complete && heroImg.naturalWidth) bootShader();
@@ -57,25 +63,26 @@ if (!reduceMotion) {
     .to(".hero__cta", { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.6")
     .to(".head", { autoAlpha: 1, duration: 0.6 }, "-=0.4");
 
-  // scroll: feed shader, pour the FOUNDRY fill, then release the content
-  const foundryFill = document.getElementById("foundryFill");
-  ScrollTrigger.create({
-    trigger: "#hero",
-    start: "top top",
-    end: "bottom top",
-    scrub: true,
-    onUpdate(self) {
-      const p = self.progress;
+}
+
+/* scroll: pour the FOUNDRY fill for everyone; zoom/parallax only with motion */
+const foundryFill = document.getElementById("foundryFill");
+ScrollTrigger.create({
+  trigger: "#hero",
+  start: "top top",
+  end: "bottom top",
+  scrub: true,
+  onUpdate(self) {
+    const p = self.progress;
+    const fill = Math.min(1, p / 0.42);
+    if (foundryFill) foundryFill.style.clipPath = `inset(${(1 - fill) * 100}% 0 0 0)`;
+    if (!reduceMotion) {
       furnace?.setScroll(p);
-      const fill = Math.min(1, p / 0.42);
-      if (foundryFill) foundryFill.style.clipPath = `inset(${(1 - fill) * 100}% 0 0 0)`;
       const fade = Math.max(0, p - 0.38) * 1.7;
       gsap.set(".hero__content", { yPercent: p * -16, autoAlpha: 1 - fade });
-    },
-  });
-} else {
-  gsap.set(".hero .line__in, .hero__sub, .hero__cta, .hero__plate, .head", { clearProps: "all" });
-}
+    }
+  },
+});
 
 /* ============================================================
    STAMP + FADE reveals
@@ -277,7 +284,6 @@ if (!reduceMotion) {
    FINALE — rising embers
    ============================================================ */
 function embers() {
-  if (reduceMotion) return;
   const canvas = document.getElementById("emberCanvas") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
