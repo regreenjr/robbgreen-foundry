@@ -31,13 +31,14 @@ npm run build      # production build -> dist/
    tannoy chain (bandpass, bitcrush, slap echo). SOUND toggle, bottom right.
 6. **Ember particle canvas** over the finale pour.
 
-## Motion accessibility
+## Motion accessibility (two tiers)
 
-Motion follows `prefers-reduced-motion` by default, with a MOTION ON/OFF
-override (bottom right, persisted in localStorage, `?motion=1|0` URL override).
-With motion off, the floor stacks vertically and everything renders statically.
-NOTE: this Mac has system-wide Reduce Motion enabled, so without the toggle the
-site would have shown the static version.
+The **liquid layer** (furnace haze, embers, cursor ripple, molten wordmark
+fill, progress pipe) always runs; under `prefers-reduced-motion` it is
+dampened via the shader's `u_calm` uniform. The **big moves** (pinned
+horizontal rail, parallax, reveal choreography) follow the system preference,
+with a MOTION ON/OFF override (bottom right, persisted in localStorage,
+`?motion=1|0` URL override). With motion off, the floor stacks vertically.
 
 ## Assets
 
