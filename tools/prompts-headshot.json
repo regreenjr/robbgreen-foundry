@@ -1,0 +1,20 @@
+[
+  {
+    "index": 1,
+    "id": "hs-smile-foundry",
+    "image": "generated/headshot/base-smile.jpg",
+    "prompt": "Edit this photo. Keep this exact man, his face, expression, smile, hair and identity completely unchanged and photorealistic. Replace the white studio background with a dark out-of-focus foundry interior: near-black iron machinery, faint atmospheric haze, a soft acid-green glow from molten metal far behind him on one side. Relight the portrait cinematically: keep his skin tones natural and warm, add a restrained acid-green rim light along one side of his hair, jawline and shoulder, deep soft shadows on the other side. Change his shirt to a plain dark charcoal button shirt. Subtle 35mm film grain. Professional head-and-shoulders portrait crop, head centered. No text, no watermark."
+  },
+  {
+    "index": 2,
+    "id": "hs-smile-ember",
+    "image": "generated/headshot/base-smile.jpg",
+    "prompt": "Edit this photo. Keep this exact man, his face, expression, smile, hair and identity completely unchanged and photorealistic. Replace the white background with a very dark blurred industrial hall with tiny green ember sparks drifting far behind him. Cinematic low-key lighting: natural warm skin tones, one gentle acid-green edge light tracing his shoulder and one side of his head, everything else falling into near-black. Change his shirt to a plain black t-shirt. Subtle film grain. Professional head-and-shoulders portrait crop, head centered. No text, no watermark."
+  },
+  {
+    "index": 3,
+    "id": "hs-dark-foundry",
+    "image": "generated/headshot/base-dark.jpg",
+    "prompt": "Edit this photo. Keep this exact man, his face, expression, hair and identity completely unchanged and photorealistic. Keep the dark moody atmosphere but shift the background to a dark out-of-focus foundry interior with a soft acid-green glow of molten metal far behind him on one side, faint drifting green ember sparks. Add a restrained acid-green rim light along one side of his hair, jaw and shoulder, keep his skin tones natural. Subtle 35mm film grain. Professional head-and-shoulders portrait crop, head centered. No text, no watermark."
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "index": 1,
+    "id": "hs2-foundry",
+    "image": "generated/headshot/base-2023.jpg",
+    "prompt": "Edit this photo. Keep this exact man, his face, expression, smile, hair and identity completely unchanged and photorealistic. Replace the background with a dark out-of-focus foundry interior: near-black iron machinery, faint atmospheric haze, a soft acid-green glow from molten metal far behind him on one side. Relight the portrait cinematically: keep his skin tones natural and warm, add a restrained acid-green rim light along one side of his hair, jawline and shoulder, deep soft shadows on the other side. Change his striped shirt to a plain dark charcoal button shirt. Subtle 35mm film grain. Professional head-and-shoulders portrait, head centered with a little headroom, square crop. No text, no watermark."
+  },
+  {
+    "index": 2,
+    "id": "hs2-embers",
+    "image": "generated/headshot/base-2023.jpg",
+    "prompt": "Edit this photo. Keep this exact man, his face, expression, smile, hair and identity completely unchanged and photorealistic. Replace the background with a very dark blurred industrial hall with tiny acid-green ember sparks drifting far behind him. Cinematic low-key lighting: natural warm skin tones, one gentle acid-green edge light tracing his shoulder and one side of his head, everything else falling into near-black. Change his striped shirt to a plain black t-shirt. Subtle film grain. Professional head-and-shoulders portrait, head centered with a little headroom, square crop. No text, no watermark."
+  },
+  {
+    "index": 3,
+    "id": "hs2-pour",
+    "image": "generated/headshot/base-2023.jpg",
+    "prompt": "Edit this photo. Keep this exact man, his face, expression, smile, hair and identity completely unchanged and photorealistic. Place him on a dark foundry shop floor: behind him, heavily out of focus, a bright stream of molten acid-green metal pours from a ladle with green sparks scattering, lighting the haze around it. The green glow is stronger on one side of the frame but his skin stays natural and warm with only a confident acid-green rim light on that side of his hair, jaw and shoulder. Change his striped shirt to a plain dark charcoal work shirt. Subtle 35mm film grain. Professional head-and-shoulders portrait, head centered with a little headroom, square crop. No text, no watermark."
+  }
+]

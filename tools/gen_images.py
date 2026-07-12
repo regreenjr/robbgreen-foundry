@@ -14,9 +14,19 @@ def key():
     sys.exit("no OPENROUTER_API_KEY")
 
 def gen_one(k, model, item, aspect, outdir):
+    # optional image-to-image: item["image"] is a local path used as edit source
+    if item.get("image"):
+        raw = Path(item["image"]).expanduser().read_bytes()
+        ext = Path(item["image"]).suffix.lstrip(".").lower().replace("jpg", "jpeg")
+        content = [
+            {"type": "text", "text": item["prompt"]},
+            {"type": "image_url", "image_url": {"url": f"data:image/{ext};base64,{base64.b64encode(raw).decode()}"}},
+        ]
+    else:
+        content = item["prompt"]
     body = {
         "model": model,
-        "messages": [{"role": "user", "content": item["prompt"]}],
+        "messages": [{"role": "user", "content": content}],
         "modalities": ["image", "text"],
         "image_config": {"aspect_ratio": aspect},
     }

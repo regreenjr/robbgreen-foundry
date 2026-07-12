@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LinkedIn cover compositor</title>
+  <link rel="stylesheet" href="/node_modules/@fontsource/big-shoulders-display/800.css" />
+  <link rel="stylesheet" href="/node_modules/@fontsource/big-shoulders-display/900.css" />
+  <link rel="stylesheet" href="/node_modules/@fontsource/ibm-plex-mono/500.css" />
+  <style>
+    :root {
+      --iron-0: #0a0b09;
+      --bone: #e9e7da;
+      --melt: #a8f53e;
+      --melt-deep: #33580f;
+      --glow: rgba(150, 235, 60, 0.4);
+    }
+    body { margin: 0; background: #222; display: grid; place-items: center; min-height: 100vh; }
+    .banner {
+      position: relative;
+      width: 1584px;
+      height: 396px;
+      overflow: hidden;
+      background: var(--iron-0);
+    }
+    .banner__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--bg-pos, center 42%);
+    }
+    /* darken left-bottom where the profile photo overlaps, and keep type legible */
+    .banner__shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10, 11, 9, 0.85) 0%, rgba(10, 11, 9, 0.35) 30%, rgba(10, 11, 9, 0.05) 55%),
+        linear-gradient(to top, rgba(10, 11, 9, 0.55) 0%, transparent 35%);
+    }
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      opacity: 0.06;
+    }
+    .banner__type {
+      position: absolute;
+      left: 470px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+    }
+    .banner__word {
+      font-family: "Big Shoulders Display";
+      font-weight: 900;
+      font-size: 132px;
+      line-height: 0.94;
+      letter-spacing: 0.005em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--bone);
+      text-shadow: 0 6px 40px rgba(0, 0, 0, 0.65);
+    }
+    .banner__word.outline {
+      color: transparent;
+      -webkit-text-stroke: 3px var(--melt);
+      filter: drop-shadow(0 0 20px var(--glow));
+      text-shadow: none;
+    }
+    .banner__row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-top: 18px;
+    }
+    .banner__tag {
+      font-family: "IBM Plex Mono";
+      font-weight: 500;
+      font-size: 17px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--melt);
+      padding: 10px 16px;
+      border: 1px solid var(--melt-deep);
+      background: rgba(10, 11, 9, 0.72);
+    }
+    .banner__url {
+      font-family: "IBM Plex Mono";
+      font-weight: 500;
+      font-size: 17px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(233, 231, 218, 0.75);
+    }
+  </style>
+</head>
+<body>
+  <div class="banner" id="banner">
+    <img class="banner__bg" id="bg" src="/img/li-cover-bg.jpg" alt="" />
+    <div class="banner__shade"></div>
+    <div class="banner__type">
+      <div class="banner__word">THE&nbsp;GREEN</div>
+      <div class="banner__word outline">FOUNDRY</div>
+      <div class="banner__row">
+        <span class="banner__tag">WORKS OF ONE&ensp;/&ensp;POP. 1</span>
+        <span class="banner__url">ROBBGREEN.COM</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
