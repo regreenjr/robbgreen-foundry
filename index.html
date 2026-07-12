@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robb Green | The Green Foundry</title>
+  <meta name="description" content="The Green Foundry. Robb Green, one operator and a floor of machines. AI systems businesses actually pay for: Dittoads, Enigma, RooferRank, and a rack of working agents." />
+  <meta property="og:title" content="Robb Green | The Green Foundry" />
+  <meta property="og:description" content="One operator, a floor of machines. AI systems businesses actually pay for." />
+  <meta property="og:image" content="https://robbgreen.com/og.jpg" />
+  <meta property="og:url" content="https://robbgreen.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0a0b09" />
+  <link rel="canonical" href="https://robbgreen.com/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preload" as="image" href="/img/hero-hall.jpg" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ======= progress pipe (fixed, fills with melt as you descend) ======= -->
+    <div class="pipe" aria-hidden="true">
+      <div class="pipe__track"></div>
+      <div class="pipe__fill" id="pipeFill"></div>
+      <div class="pipe__readout mono" id="pipeReadout">0%</div>
+    </div>
+
+    <!-- ======= header ======= -->
+    <header class="head" id="head">
+      <a class="head__mark mono" href="#top" aria-label="The Green Foundry, home">
+        <span class="head__sq" aria-hidden="true"></span>RG&nbsp;/&nbsp;FOUNDRY
+      </a>
+      <nav class="head__nav mono">
+        <a href="#floor">The Floor</a>
+        <a href="#method">Method</a>
+        <a href="#operator">Operator</a>
+      </nav>
+      <a class="head__cta mono" href="https://calendly.com/robbgreen/25min" target="_blank" rel="noopener noreferrer">Book a call</a>
+    </header>
+
+    <main id="top">
+
+      <!-- ======= HERO : the furnace hall ======= -->
+      <section class="hero" id="hero">
+        <div class="hero__media">
+          <img id="heroImg" class="hero__img" src="/img/hero-hall.jpg" alt="" aria-hidden="true" />
+          <canvas id="heroCanvas" class="hero__canvas" aria-hidden="true"></canvas>
+          <div class="hero__shade" aria-hidden="true"></div>
+        </div>
+        <div class="hero__content">
+          <h1 class="hero__title display" aria-label="The Green Foundry">
+            <span class="line"><span class="line__in">THE&nbsp;GREEN</span></span>
+            <span class="line line--outline"><span class="line__in">FOUNDRY<span class="line__fill" id="foundryFill" aria-hidden="true">FOUNDRY</span></span></span>
+            <span class="hero__poptag mono" aria-hidden="true">WORKS OF ONE&ensp;/&ensp;POP. 1</span>
+          </h1>
+          <p class="hero__sub">
+            <strong>Robb Green.</strong> One operator, a floor of machines.
+            I build AI systems businesses actually pay for.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--melt" href="https://calendly.com/robbgreen/25min" target="_blank" rel="noopener noreferrer">Book a call</a>
+            <a class="btn btn--ghost" href="#doctrine">Walk the floor</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= DOCTRINE : the manifesto ======= -->
+      <section class="doctrine" id="doctrine">
+        <figure class="doctrine__fig" aria-hidden="true">
+          <img src="/img/furnace-door.jpg" alt="" loading="lazy" />
+        </figure>
+        <div class="doctrine__lines">
+          <h2 class="doctrine__line display" data-stamp>MOST AI IS <em>THEATER.</em></h2>
+          <p class="doctrine__line display doctrine__line--dim" data-stamp>DECKS. DEMOS. PILOTS THAT DIE IN COMMITTEE.</p>
+          <p class="doctrine__line display doctrine__line--melt" data-stamp>THIS FLOOR ONLY SHIPS WHAT <em>EARNS.</em></p>
+        </div>
+        <p class="doctrine__body" data-fade>
+          One operator with the right systems now outproduces a whole team.
+          I don't pitch that shift from a stage. I run my work on it,
+          and the machines below are the receipts.
+        </p>
+      </section>
+
+      <!-- ======= THE FLOOR : horizontal pan through the machines ======= -->
+      <section class="floor" id="floor">
+        <div class="floor__pin">
+          <div class="floor__track" id="floorTrack">
+
+            <article class="slide slide--intro">
+              <p class="slide__badge mono">SHOP FLOOR</p>
+              <h2 class="slide__giant display">THE<br />FLOOR</h2>
+              <p class="slide__lede">Four machines. All live, all real.<br />Walk the line.</p>
+              <p class="slide__hint mono" aria-hidden="true">RAIL&nbsp;&rarr;</p>
+            </article>
+
+            <article class="slide machine">
+              <figure class="machine__fig">
+                <img src="/img/machine-dittoads.jpg" alt="The creative press: an industrial printing machine stamping glowing plates" loading="lazy" />
+              </figure>
+              <div class="machine__panel">
+                <p class="machine__no mono">M-01</p>
+                <h3 class="machine__name display">DITTOADS</h3>
+                <p class="machine__kind mono">THE CREATIVE PRESS</p>
+                <p class="machine__desc">
+                  Watches winning ads, then stamps out on-brand static creative in
+                  minutes. 40+ templates, AI imagery, fully self-serve.
+                </p>
+                <dl class="machine__meta mono">
+                  <div><dt>STATUS</dt><dd class="live">LIVE, TAKING PAYMENTS</dd></div>
+                  <div><dt>SINCE</dt><dd>MAY 2026</dd></div>
+                  <div><dt>STACK</dt><dd>DJANGO / VITE / SUPABASE</dd></div>
+                </dl>
+                <a class="machine__link mono" href="https://dittoads.ai" target="_blank" rel="noopener noreferrer">dittoads.ai &nearr;</a>
+              </div>
+            </article>
+
+            <article class="slide machine">
+              <figure class="machine__fig">
+                <img src="/img/machine-enigma.jpg" alt="The signal decoder: a towering cipher machine with green oscilloscope screens" loading="lazy" />
+              </figure>
+              <div class="machine__panel">
+                <p class="machine__no mono">M-02</p>
+                <h3 class="machine__name display">ENIGMA</h3>
+                <p class="machine__kind mono">THE SIGNAL DECODER</p>
+                <p class="machine__desc">
+                  Turns TikTok organic into a predictable channel: isolates the
+                  variables that drive reach, scores every post, iterates to winners.
+                </p>
+                <dl class="machine__meta mono">
+                  <div><dt>STATUS</dt><dd class="live">LIVE, PAYING USERS</dd></div>
+                  <div><dt>METHOD</dt><dd>VARIABLE ISOLATION</dd></div>
+                  <div><dt>SURFACE</dt><dd>TIKTOK ORGANIC</dd></div>
+                </dl>
+              </div>
+            </article>
+
+            <article class="slide machine">
+              <figure class="machine__fig">
+                <img src="/img/machine-rooferrank.jpg" alt="The visibility gantry: a crane hoisting a glowing wireframe house" loading="lazy" />
+              </figure>
+              <div class="machine__panel">
+                <p class="machine__no mono">M-03</p>
+                <h3 class="machine__name display">ROOFERRANK</h3>
+                <p class="machine__kind mono">THE VISIBILITY GANTRY</p>
+                <p class="machine__desc">
+                  AI search-visibility audits for roofing companies. Checkout to
+                  delivered report with no human in the loop.
+                </p>
+                <dl class="machine__meta mono">
+                  <div><dt>STATUS</dt><dd class="live">LIVE</dd></div>
+                  <div><dt>STACK</dt><dd>NEXT.JS / STRIPE / SUPABASE</dd></div>
+                </dl>
+                <a class="machine__link mono" href="https://rooferrankai.com" target="_blank" rel="noopener noreferrer">rooferrankai.com &nearr;</a>
+              </div>
+            </article>
+
+            <article class="slide machine">
+              <figure class="machine__fig">
+                <img src="/img/machine-agents.jpg" alt="The agent racks: rows of industrial bays housing small automaton workers" loading="lazy" />
+              </figure>
+              <div class="machine__panel">
+                <p class="machine__no mono">M-04</p>
+                <h3 class="machine__name display">THE AGENT RACKS</h3>
+                <p class="machine__kind mono">STANDING CREW</p>
+                <p class="machine__desc">
+                  Dozens of custom agents and skills. Research, enrichment, audits,
+                  outreach, ops. The crew that runs this floor while I sleep.
+                </p>
+                <dl class="machine__meta mono">
+                  <div><dt>STATUS</dt><dd class="live">IN SERVICE DAILY</dd></div>
+                  <div><dt>STACK</dt><dd>CLAUDE CODE / MCP / TS</dd></div>
+                </dl>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= LEDGER : output numbers ======= -->
+      <section class="ledger" id="ledger">
+        <div class="ledger__row">
+          <div class="ledger__cell" data-fade>
+            <span class="ledger__num display" data-count="4">0</span>
+            <span class="ledger__k mono">MACHINES ON THE FLOOR</span>
+          </div>
+          <div class="ledger__cell" data-fade>
+            <span class="ledger__num display" data-count="2">0</span>
+            <span class="ledger__k mono">TAKING PAYMENT TODAY</span>
+          </div>
+          <div class="ledger__cell" data-fade>
+            <span class="ledger__num display">DOZENS</span>
+            <span class="ledger__k mono">AGENTS IN THE RACKS</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= METHOD : two ways in ======= -->
+      <section class="method" id="method">
+        <figure class="method__print" aria-hidden="true">
+          <img src="/img/blueprint.jpg" alt="" loading="lazy" />
+        </figure>
+        <div class="method__body">
+          <h2 class="method__title display" data-stamp>TWO WAYS TO<br />ENGAGE THE <em>WORKS.</em></h2>
+          <div class="method__modes">
+            <article class="mode" data-fade>
+              <p class="mode__no mono">MODE 01</p>
+              <h3 class="mode__h display">I BUILD IT.</h3>
+              <p class="mode__p">
+                Done-for-you AI systems, designed and shipped end to end. You get a
+                working product in market. Not a roadmap, not a pilot.
+              </p>
+            </article>
+            <article class="mode" data-fade>
+              <p class="mode__no mono">MODE 02</p>
+              <h3 class="mode__h display">I LEAD YOUR CREW.</h3>
+              <p class="mode__p">
+                Advisory and enablement for teams and portfolios. Your people learn
+                to ship AI that earns, with standards that outlive my engagement.
+              </p>
+            </article>
+          </div>
+          <p class="method__span" data-fade>
+            From a single shop to a PE portfolio. Same discipline, sized to fit.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======= OPERATOR : the ID plate ======= -->
+      <section class="operator" id="operator">
+        <div class="operator__card" data-fade>
+          <div class="operator__photo">
+            <canvas id="portraitCanvas" width="480" height="600" aria-label="Halftone portrait of Robb Green, operator"></canvas>
+          </div>
+          <dl class="operator__rows mono">
+            <div><dt>OPERATOR</dt><dd>No. 001</dd></div>
+            <div><dt>NAME</dt><dd>GREEN, ROBB</dd></div>
+            <div><dt>DUTY</dt><dd>BUILDS THE MACHINES</dd></div>
+            <div><dt>CLEARANCE</dt><dd class="live">ALL FLOORS</dd></div>
+          </dl>
+        </div>
+        <div class="operator__bio">
+          <h2 class="operator__kicker display" data-stamp>JUDGED BY WHAT'S <em>LIVE,</em> NOT WHAT I CLAIM.</h2>
+          <div class="operator__text" data-fade>
+            <p>
+              I'm an entrepreneur who started building with AI and couldn't stop.
+              For years I ran businesses the hard way. Then AI changed what one
+              person could make, and I went all in.
+            </p>
+            <p>
+              Now I design and ship real products: ad-creative engines, acquisition
+              systems, lead-gen tools, and a standing crew of agents. Some of them
+              take money while I sleep.
+            </p>
+            <p>
+              I also convene a private mastermind of operators going all in on AI.
+              Biweekly calls, real builds, no theory theater. By invitation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= FINALE : the commission desk ======= -->
+      <section class="finale" id="finale">
+        <div class="finale__media" aria-hidden="true">
+          <img src="/img/finale-pour.jpg" alt="" loading="lazy" />
+          <div class="finale__shade"></div>
+          <canvas class="finale__embers" id="emberCanvas"></canvas>
+        </div>
+        <div class="finale__content">
+          <h2 class="finale__title display">
+            <span class="line"><span class="line__in">DONE WITH</span></span>
+            <span class="line"><span class="line__in">AI THEATER?</span></span>
+            <span class="line line--melt"><span class="line__in">LET'S POUR.</span></span>
+          </h2>
+          <a class="btn btn--melt btn--big" href="https://calendly.com/robbgreen/25min" target="_blank" rel="noopener noreferrer">Book a call</a>
+          <p class="finale__note">
+            25 minutes. No pitch, no deck. Tell me what you want AI to do
+            and I'll tell you straight if I can build it.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ======= footer ======= -->
+    <footer class="foot mono">
+      <span>&copy; 2026 ROBB GREEN</span>
+      <nav class="foot__links">
+        <a href="https://www.linkedin.com/in/robbg/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+        <a href="https://github.com/regreenjr" target="_blank" rel="noopener noreferrer">GITHUB</a>
+        <a href="mailto:robb@robbgreen.com">EMAIL</a>
+      </nav>
+      <span class="foot__note">BUILT BY THE OPERATOR</span>
+    </footer>
+
+    <!-- ======= control cluster : sound + motion ======= -->
+    <div class="controls">
+      <button class="ctrlbtn mono" id="motionBtn" aria-pressed="false">MOTION OFF</button>
+      <button class="ctrlbtn mono" id="soundBtn" aria-pressed="false">
+        <span class="ctrlbtn__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="ctrlbtn__label">SOUND OFF</span>
+      </button>
+    </div>
+
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

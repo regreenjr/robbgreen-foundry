@@ -1,0 +1,62 @@
+[
+  {
+    "index": 1,
+    "id": "hero-hall",
+    "prompt": "Colossal dark foundry hall interior, a giant industrial crucible pouring a single stream of luminous molten green metal, cascading sparks, one tiny human silhouette standing on a steel gantry far below for scale, near-black iron and charcoal tones, the acid-green molten glow is the only color, cinematic volumetric light through haze, photorealistic, anamorphic 35mm film still, deep shadows, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 2,
+    "id": "machine-dittoads",
+    "prompt": "Massive industrial rotary printing press machine stamping rows of glowing green plates on a dark conveyor line, mechanical rollers and pistons mid-motion, ink mist, near-black iron machinery, acid-green glow from the plates is the only color, cinematic volumetric light, photorealistic, anamorphic 35mm film still, deep shadows, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 3,
+    "id": "machine-enigma",
+    "prompt": "Towering vintage signal-decoding machine with rotating cipher drums, patch cables and round oscilloscope screens glowing green with waveforms, dark industrial control room, near-black iron and bakelite, acid-green phosphor glow is the only color, cinematic volumetric haze, photorealistic, anamorphic 35mm film still, deep shadows, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 4,
+    "id": "machine-rooferrank",
+    "prompt": "Industrial overhead gantry crane inside a dark factory hall hoisting a glowing green wireframe skeleton of a pitched-roof house, chains and hooks taut, workers' scaffolds below, near-black iron tones, the green wireframe glow is the only color, cinematic volumetric light, photorealistic, anamorphic 35mm film still, deep shadows, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 5,
+    "id": "machine-agents",
+    "prompt": "Long wall of identical industrial alcoves, each bay housing a small dormant humanoid automaton worker robot hanging from a rack, a few bays lit from within by green light, dark machine shop, near-black iron tones, acid-green glow is the only color, cinematic volumetric haze, photorealistic, anamorphic 35mm film still, deep shadows, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 6,
+    "id": "blueprint",
+    "prompt": "Technical engineering blueprint of a complex industrial machine, thin luminous green line-work on near-black paper, orthographic cutaway with gears pistons and pipes, tiny illegible annotation marks and dimension arrows, drafting grid, flat graphic style, high detail, no readable text, no watermark"
+  },
+  {
+    "index": 7,
+    "id": "molten-macro",
+    "prompt": "Extreme macro photograph of molten green metal flowing like viscous liquid light over black cast iron, bright hot core fading to deep green edges, tiny sparks, near-black background, the green glow is the only color, photorealistic, shallow depth of field, anamorphic 35mm film still, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 8,
+    "id": "iron-texture",
+    "prompt": "Flat surface texture of a dark cast iron plate, subtle mill scale, faint scratches and machining marks, four steel rivets in the corners, very low key lighting, near-black charcoal tones, no color accents, photorealistic, top-down, even lighting, no text, no watermark"
+  },
+  {
+    "index": 9,
+    "id": "gauges",
+    "prompt": "Cluster of vintage industrial pressure gauges and dials on a dark riveted control panel, needles frozen mid-reading, one central gauge glowing acid-green from within, brass bezels gone dark, near-black tones, the green glow is the only color, cinematic close-up, photorealistic, anamorphic 35mm film still, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 10,
+    "id": "furnace-door",
+    "prompt": "Massive circular industrial furnace door seen head-on, blinding acid-green light leaking around its sealed edges and through a small inspection hatch, dark riveted iron wall, floating embers, near-black tones, the green glow is the only color, symmetrical composition, cinematic, photorealistic, anamorphic 35mm film still, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 11,
+    "id": "catwalk",
+    "prompt": "High steel catwalk crossing over a vast foundry floor, acid-green glow rising from molten channels far below, a lone silhouette walking away along the catwalk, atmospheric haze, near-black iron tones, the green glow is the only color, cinematic wide shot, photorealistic, anamorphic 35mm film still, deep shadows, subtle film grain, no text, no watermark"
+  },
+  {
+    "index": 12,
+    "id": "finale-pour",
+    "prompt": "Wide cinematic shot of a giant foundry ladle tipping to pour molten acid-green metal into a casting mold, eruption of green sparks filling the frame, dark industrial hall barely visible, near-black tones, the green glow is the only color, high contrast, photorealistic, anamorphic 35mm film still, deep shadows, subtle film grain, no text, no watermark"
+  }
+]
