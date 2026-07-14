@@ -1,5 +1,5 @@
 # The Green Foundry (robbgreen.com) — LIVE STATE
-Updated: 2026-07-14 · by Claude Code session
+Updated: 2026-07-14 10:04 · by Claude Code session (pickup)
 
 ## Goal
 robbgreen.com rebuilt as an award-style capability showcase (dark foundry pouring
@@ -7,6 +7,14 @@ molten green). Site is LIVE and stable; remaining work is brand rollout (LinkedI
 and optional polish.
 
 ## Done (recent)
+- 07-14: Lighthouse pass on prod (mobile): Perf 94 / A11y 95 / BP 100 / SEO 100.
+  LCP 2.8s, CLS 0, TBT 30ms. Only flags: span.foot__note ("BUILT BY THE OPERATOR")
+  fails color-contrast; a.head__mark aria-label missing visible "RG / FOUNDRY" text;
+  21 KiB unused JS. JSON in session scratchpad (ephemeral).
+- 07-14: LinkedIn deliverables found moved (by Robb) into ~/Desktop/LinkedIn/ — all
+  5 files intact. Copy doc synced to site line: headline + both alternates now say
+  "AI systems that deliver ROI" (was "businesses actually pay for"); cover-image
+  path in doc fixed to new location. Prod HTML verified serving ROI line.
 - 07-12: RG monogram favicon LIVE (svg+png+ico+apple-touch, cut from Big Shoulders
   900 outlines via tools/make_favicon.py). Verified 200s on robbgreen.com 07-14.
 - 07-12: Hero subline + meta changed to "I build AI systems that deliver ROI."
@@ -24,14 +32,15 @@ and optional polish.
 - Nothing running. No background tasks, dev server stopped, repo clean & pushed.
 
 ## Next (ordered)
-1. LinkedIn rollout (Robb, manual): upload ~/Desktop/robbgreen-linkedin-cover.png,
-   pick headshot (rec: robbgreen-headshot-pour.png), paste headline/About from
-   ~/Desktop/robbgreen-linkedin-copy.md. NOTE: copy doc still says "businesses
-   actually pay for"; site now says "deliver ROI" — regenerate doc if he wants match.
+1. LinkedIn rollout (Robb, manual, everything in ~/Desktop/LinkedIn/): upload
+   robbgreen-linkedin-cover.png, pick headshot (rec: robbgreen-headshot-pour.png),
+   paste headline/About from robbgreen-linkedin-copy.md (now matches site copy).
 2. Optional: point console.robbgreen.com at project robbgreen-console (one
    `vercel domains add` + API attach) if the old console should stay reachable.
-3. Optional polish: Lighthouse pass on prod; real-iPhone QA of the stacked floor;
-   consider swapping og.jpg to a version with the RG mark.
+3. Optional polish (Lighthouse pass DONE, see Done): fix the two a11y flags if
+   design allows (foot__note contrast, head__mark aria-label — 1-liners + deploy);
+   real-iPhone QA of the stacked floor; consider swapping og.jpg to a version
+   with the RG mark.
 4. If Robb wants kie.ai working: paste real key into ~/clawd/secrets/kie.env
    (currently PLACEHOLDER; all gen ran via OpenRouter instead).
 
@@ -65,8 +74,8 @@ and optional polish.
 - Repo: ~/robbgreen-foundry · GitHub regreenjr/robbgreen-foundry (public, main)
 - Vercel: project robbgreen-foundry, team solving-alphas-projects (scope flag)
 - Live: https://robbgreen.com (+ www 308→apex) · old site: robbgreen-console.vercel.app
-- Desktop deliverables: robbgreen-linkedin-cover.png, robbgreen-linkedin-copy.md,
-  robbgreen-headshot-{pour,foundry-smile,embers}.png
+- Deliverables in ~/Desktop/LinkedIn/: robbgreen-linkedin-cover.png,
+  robbgreen-linkedin-copy.md, robbgreen-headshot-{pour,foundry-smile,embers}.png
 - Source photos: ~/Desktop/Robb 1.4.26/Robb Green Headshots/ (best: Artica 4402px,
   "Robb headshot 2023.png" = Robb's preferred base)
 - Generated assets: generated/{batch1,licover,headshot}/ + manifests; site images
