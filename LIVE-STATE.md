@@ -1,5 +1,5 @@
 # The Green Foundry (robbgreen.com) — LIVE STATE
-Updated: 2026-07-14 10:04 · by Claude Code session (pickup)
+Updated: 2026-08-07 · by Claude Code session (identity line rollout)
 
 ## Goal
 robbgreen.com rebuilt as an award-style capability showcase (dark foundry pouring
@@ -7,6 +7,13 @@ molten green). Site is LIVE and stable; remaining work is brand rollout (LinkedI
 and optional polish.
 
 ## Done (recent)
+- 08-07: Identity line (Robb's voice, FINAL) shipped to hero sub + meta description
+  + og:description, and synced to ~/Desktop/LinkedIn/robbgreen-linkedin-copy.md
+  (headline, both alternates, About bridge line): "I share with business owners
+  what is possible with AI. Advise those that get it and build for those that
+  want it done now." Replaces "I build AI systems that deliver ROI." Site role
+  per Strategy v4 (~/Desktop/North-Star-Alignment.html): the teaching home.
+  Next increment: free Ad Teardown CTA replaces "Book a call" framing.
 - 07-14: Lighthouse pass on prod (mobile): Perf 94 / A11y 95 / BP 100 / SEO 100.
   LCP 2.8s, CLS 0, TBT 30ms. Only flags: span.foot__note ("BUILT BY THE OPERATOR")
   fails color-contrast; a.head__mark aria-label missing visible "RG / FOUNDRY" text;
