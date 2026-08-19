@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Your ads already exist · Robb Green</title>
+<meta name="description" content="Type your brand. If we already built your ads, you go straight to them.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0b09">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Your ads already exist">
+<meta property="og:description" content="Type your brand. If we already built your ads, you go straight to them.">
+<meta property="og:url" content="https://robbgreen.com/live">
+<!--
+  THE GATE. Deliberately one file: no webfonts, no images, no framework, no second
+  request. This page opens on a convention access point shared by several hundred
+  phones at the exact same second, and every asset it does not ask for is a second
+  it does not cost. Fonts are the system stack; the 47 brands are inlined below.
+-->
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --iron-0:#0a0b09; --iron-1:#11130f; --iron-2:#191c15;
+  --bone:#e9e7da; --bone-dim:#91927f;
+  --melt:#a8f53e; --melt-hot:#eeffc9; --melt-deep:#33580f;
+  --edge:rgba(233,231,218,.13); --edge-strong:rgba(233,231,218,.28);
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--iron-0);color:var(--bone);font-family:var(--sans);
+  min-height:100svh;display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top) 20px calc(env(safe-area-inset-bottom) + 28px);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{width:100%;max-width:560px;margin:0 auto;flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--melt);margin:0 0 18px}
+h1{font-size:clamp(30px,8.5vw,46px);line-height:1.02;letter-spacing:-.02em;font-weight:800;margin:0 0 14px}
+.lede{color:var(--bone-dim);font-size:16px;line-height:1.5;margin:0 0 26px;max-width:44ch}
+label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);margin:0 0 7px}
+input{
+  width:100%;background:var(--iron-1);color:var(--bone);border:1px solid var(--edge);
+  border-radius:2px;padding:15px 14px;font-size:17px;font-family:var(--sans);
+  transition:border-color .12s;
+}
+input:focus{outline:none;border-color:var(--melt)}
+input::placeholder{color:#5d5f52}
+.field+.field{margin-top:14px}
+button{
+  width:100%;margin-top:20px;background:var(--melt);color:#0d1206;border:0;border-radius:2px;
+  padding:16px;font-size:15px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  font-family:var(--mono);cursor:pointer;
+}
+button:hover{background:var(--melt-hot)}
+button:disabled{opacity:.5;cursor:default}
+.results{list-style:none;margin:12px 0 0;padding:0;max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.results li{border-bottom:1px solid var(--edge)}
+.results button{
+  width:100%;margin:0;background:none;color:var(--bone);text-align:left;padding:14px 2px;
+  font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:0;text-transform:none;
+  border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.results button:hover,.results button:focus-visible{background:var(--iron-2);outline:none}
+.results .go{font-family:var(--mono);font-size:11px;color:var(--melt);letter-spacing:.1em;flex:0 0 auto}
+.none{color:var(--bone-dim);font-size:15px;line-height:1.5;margin:18px 0 0}
+.linkish{
+  background:none;border:0;color:var(--bone-dim);font-family:var(--mono);font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;
+  cursor:pointer;padding:0;margin:22px 0 0;width:auto;
+}
+.linkish:hover{color:var(--melt)}
+.brandline{font-size:22px;font-weight:700;letter-spacing:-.01em;margin:0 0 4px}
+.err{color:#ff9b7d;font-family:var(--mono);font-size:12px;margin:12px 0 0;min-height:1em}
+.foot{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#4e5046;text-align:center;text-transform:uppercase}
+.foot a{color:#4e5046}
+[hidden]{display:none!important}
+.spin{opacity:.6}
+@media (prefers-reduced-motion:no-preference){
+  .step{animation:in .22s ease-out}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <!-- 1. the gate -->
+  <section id="s-search" class="step">
+    <p class="kick">Robb Green · Live</p>
+    <h1>Your ads already exist.</h1>
+    <p class="lede">We built a batch of fresh ad creatives for 47 brands in this room. Type yours and find out if you are one of them.</p>
+    <div class="field">
+      <label for="q">Your brand</label>
+      <input id="q" type="text" autocomplete="organization" autocapitalize="words"
+             autocorrect="off" spellcheck="false" placeholder="Start typing…" enterkeyhint="search">
+    </div>
+    <ul id="results" class="results" aria-live="polite"></ul>
+    <p id="none" class="none" hidden>Not on the list. That is the more common answer in this room, and there is a queue for it.</p>
+    <button id="to-queue" class="linkish" type="button">Not listed? Get in the queue</button>
+  </section>
+
+  <!-- 2. matched -->
+  <section id="s-match" class="step" hidden>
+    <p class="kick">Match found</p>
+    <p class="brandline" id="m-brand"></p>
+    <h1>Yours is built.</h1>
+    <p class="lede">Five fresh creatives, a full vault, and the download. Drop your email and it opens now.</p>
+    <div class="field">
+      <label for="m-email">Email</label>
+      <input id="m-email" type="email" autocomplete="email" inputmode="email"
+             autocapitalize="off" autocorrect="off" spellcheck="false"
+             placeholder="you@yourbrand.com" enterkeyhint="go">
+    </div>
+    <p class="err" id="m-err"></p>
+    <button id="m-go" type="button">Open my ads</button>
+    <button id="m-back" class="linkish" type="button">Not my brand</button>
+  </section>
+
+  <!-- 3. queue -->
+  <section id="s-queue" class="step" hidden>
+    <p class="kick">The queue</p>
+    <h1>You are next.</h1>
+    <p class="lede">Three fields. You get the same thing the 47 got: a batch of ads built for your brand, sent to you.</p>
+    <div class="field">
+      <label for="q-brand">Brand</label>
+      <input id="q-brand" type="text" autocomplete="organization" autocapitalize="words" placeholder="Your company">
+    </div>
+    <div class="field">
+      <label for="q-site">Website</label>
+      <input id="q-site" type="text" autocomplete="url" inputmode="url" autocapitalize="off"
+             autocorrect="off" spellcheck="false" placeholder="yourbrand.com">
+    </div>
+    <div class="field">
+      <label for="q-email">Email</label>
+      <input id="q-email" type="email" autocomplete="email" inputmode="email" autocapitalize="off"
+             autocorrect="off" spellcheck="false" placeholder="you@yourbrand.com" enterkeyhint="go">
+    </div>
+    <p class="err" id="q-err"></p>
+    <button id="q-go" type="button">Put me in</button>
+    <button id="q-back" class="linkish" type="button">Back to search</button>
+  </section>
+
+  <!-- 4. queued -->
+  <section id="s-done" class="step" hidden>
+    <p class="kick">You are in</p>
+    <h1>Got it.</h1>
+    <p class="lede" id="d-msg">Your ads get built and sent to the address you gave. Nothing else to do.</p>
+    <button id="d-again" class="linkish" type="button">Check another brand</button>
+  </section>
+
+</main>
+<p class="foot">robbgreen.com/live</p>
+
+<script>
+(function(){
+  "use strict";
+  var API = "https://bfm-demos.vercel.app/api/live-capture";
+  var PAGE = "https://bfm-demos.vercel.app/p/";
+  var BRANDS = /*BRANDS*/[{"s":"3dwalls","n":"3D Walls By Design"},{"s":"adaptiveteams","n":"Adaptive Teams"},{"s":"advancedbio","n":"Advanced Bionutritionals"},{"s":"amvital","n":"AMVital"},{"s":"annex","n":"Annex"},{"s":"badassmoto","n":"Badass Moto"},{"s":"bdstoneworks","n":"Black Diamond Stoneworks"},{"s":"calavive","n":"Calavive"},{"s":"castilesoap","n":"Carolina Castile Soap"},{"s":"catalxst","n":"CatalXst"},{"s":"colormorelines","n":"Color More Lines"},{"s":"customempire","n":"Custom Empire Shop"},{"s":"digitalxecutive","n":"Digital Xecutive"},{"s":"ebusinesspros","n":"eBusiness Pros"},{"s":"11brands","n":"Eleven Brands"},{"s":"engin8","n":"Engin8"},{"s":"feartolove","n":"Fear to Love"},{"s":"formulation","n":"Formulation Factory"},{"s":"gro3x","n":"Gro3X"},{"s":"hadleydesigns","n":"Hadley Designs"},{"s":"havercamp","n":"Havercamp Party Products"},{"s":"hopecompany","n":"Hope's"},{"s":"houseofcyn","n":"House of Cyn"},{"s":"lavishcomforts","n":"Lavish Comforts"},{"s":"livewise","n":"Live Wise Naturals"},{"s":"mattharris","n":"Matt Harris Designs"},{"s":"megarhino","n":"MegaRhino"},{"s":"miraiclinical","n":"Mirai Clinical"},{"s":"oneil","n":"O'Neil Software"},{"s":"proteinmilkshake","n":"Protein Milkshake"},{"s":"rebrelief","n":"REB Relief"},{"s":"refreshmywater","n":"Refresh Premium Filters"},{"s":"ripvan","n":"Rip Van"},{"s":"naturalorganic","n":"Skin Perfection"},{"s":"smartish","n":"Smartish"},{"s":"snoozeshade","n":"SnoozeShade"},{"s":"spoton","n":"Spot On"},{"s":"stripfast5000","n":"StripFast5000"},{"s":"superblanky","n":"Super Blanky"},{"s":"superbaking","n":"Superbaking"},{"s":"tcpglobal","n":"TCP Global"},{"s":"ultimateclub","n":"Ultimate Health"},{"s":"ultimatewasher","n":"Ultimate Washer"},{"s":"upperechelon","n":"Upper Echelon Products"},{"s":"viscosoft","n":"ViscoSoft"},{"s":"waterfilters","n":"WaterFilters.NET"},{"s":"zerotoip","n":"ZeroToIP"}]/*END*/;
+
+  var $ = function(id){ return document.getElementById(id); };
+  var steps = ["s-search","s-match","s-queue","s-done"];
+  function show(id){
+    steps.forEach(function(s){ $(s).hidden = (s !== id); });
+    window.scrollTo(0,0);
+  }
+
+  // normalise so "amv", "AMVital" and "am vital" all land on the same brand
+  function norm(s){ return String(s).toLowerCase().replace(/[^a-z0-9]/g,""); }
+  var INDEX = BRANDS.map(function(b){ return { s:b.s, n:b.n, k:norm(b.n)+" "+b.s }; });
+
+  var chosen = null;
+
+  function render(q){
+    var list = $("results"), none = $("none");
+    list.innerHTML = "";
+    var nq = norm(q);
+    if (nq.length < 2){ none.hidden = true; return; }
+    var hits = INDEX.filter(function(b){ return b.k.indexOf(nq) !== -1; });
+    // a brand that STARTS with what you typed is what you meant
+    hits.sort(function(a,b){
+      var A = norm(a.n).indexOf(nq) === 0 ? 0 : 1, B = norm(b.n).indexOf(nq) === 0 ? 0 : 1;
+      return A - B || a.n.localeCompare(b.n);
+    });
+    none.hidden = hits.length > 0;
+    hits.slice(0,8).forEach(function(b){
+      var li = document.createElement("li");
+      var btn = document.createElement("button");
+      btn.type = "button";
+      var name = document.createElement("span"); name.textContent = b.n;
+      var go = document.createElement("span"); go.className = "go"; go.textContent = "Built ✓";
+      btn.appendChild(name); btn.appendChild(go);
+      btn.addEventListener("click", function(){ pick(b); });
+      li.appendChild(btn); list.appendChild(li);
+    });
+  }
+
+  function pick(b){
+    chosen = b;
+    $("m-brand").textContent = b.n;
+    $("m-err").textContent = "";
+    show("s-match");
+    setTimeout(function(){ $("m-email").focus(); }, 60);
+  }
+
+  var EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+  // The capture must not stand between a person and the thing they were promised.
+  // keepalive lets the request outlive the navigation, and the race caps how long
+  // anyone stares at a button on bad wifi.
+  function send(payload, ms){
+    var req = fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=UTF-8" }, // text/plain = no CORS preflight
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).then(function(r){ return r.ok; }).catch(function(){ return false; });
+    if (!ms) return req;
+    return Promise.race([req, new Promise(function(res){ setTimeout(function(){ res(null); }, ms); })]);
+  }
+
+  function busy(btn, on, label){
+    btn.disabled = on;
+    btn.classList.toggle("spin", on);
+    if (on) { btn.dataset.was = btn.textContent; btn.textContent = label; }
+    else if (btn.dataset.was) { btn.textContent = btn.dataset.was; }
+  }
+
+  $("q").addEventListener("input", function(e){ render(e.target.value); });
+  $("q").addEventListener("keydown", function(e){
+    if (e.key !== "Enter") return;
+    var first = $("results").querySelector("button");
+    if (first) first.click();
+  });
+
+  $("to-queue").addEventListener("click", function(){
+    var typed = $("q").value.trim();
+    if (typed) $("q-brand").value = typed;
+    $("q-err").textContent = "";
+    show("s-queue");
+    setTimeout(function(){ $(typed ? "q-site" : "q-brand").focus(); }, 60);
+  });
+
+  $("m-back").addEventListener("click", function(){ show("s-search"); });
+  $("q-back").addEventListener("click", function(){ show("s-search"); });
+  $("d-again").addEventListener("click", function(){
+    $("q").value = ""; render(""); show("s-search");
+  });
+
+  $("m-go").addEventListener("click", function(){
+    var email = $("m-email").value.trim();
+    if (!EMAIL.test(email)){ $("m-err").textContent = "That email does not look right."; return; }
+    busy(this, true, "Opening…");
+    var url = PAGE + chosen.s;
+    send({ kind:"match", email:email, slug:chosen.s, brand:chosen.n }, 2000)
+      .then(function(){ window.location.href = url; })
+      .catch(function(){ window.location.href = url; });
+  });
+
+  $("q-go").addEventListener("click", function(){
+    var brand = $("q-brand").value.trim();
+    var site  = $("q-site").value.trim();
+    var email = $("q-email").value.trim();
+    if (!brand){ $("q-err").textContent = "Which brand?"; return; }
+    if (!EMAIL.test(email)){ $("q-err").textContent = "That email does not look right."; return; }
+    busy(this, true, "Sending…");
+    var self = this;
+    send({ kind:"queue", email:email, brand:brand, site:site }, 6000).then(function(ok){
+      busy(self, false);
+      if (ok === false){
+        $("q-err").textContent = "That did not send. Try once more.";
+        return;
+      }
+      $("d-msg").textContent = "We build a batch for " + brand + " and send it to " + email + ". Nothing else to do.";
+      show("s-done");
+    });
+  });
+
+  // Deep link: /live?b=amvital drops someone straight on their own match.
+  var qs = new URLSearchParams(location.search).get("b");
+  if (qs){
+    var hit = INDEX.filter(function(b){ return b.s === norm(qs) || norm(b.n) === norm(qs); })[0];
+    if (hit) pick(hit);
+  }
+})();
+</script>
+</body>
+</html>
