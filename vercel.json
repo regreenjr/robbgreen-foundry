@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/mm4", "destination": "/live/index.html" },
+    { "source": "/mm4/", "destination": "/live/index.html" }
+  ]
+}
