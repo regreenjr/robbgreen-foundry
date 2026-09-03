@@ -1,7 +1,5 @@
 {
   "rewrites": [
-    { "source": "/mm4", "destination": "/live/index.html" },
-    { "source": "/mm4/", "destination": "/live/index.html" },
     { "source": "/eo", "destination": "/eo/index.html" },
     { "source": "/eo/", "destination": "/eo/index.html" }
   ]
