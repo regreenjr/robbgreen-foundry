@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EO roster — private</title>
+<meta name="robots" content="noindex">
+<style>
+  /* Robb's phone, not the wall. Business + trade + level so he can pick the 8:48
+     volunteer. Never the cell or the email — nothing on a stage needs those and the
+     list already lives in GHL. Gated on ?k= matching EO_ROSTER_KEY server-side. */
+  :root{--bg:#0e0e13;--panel:#181820;--line:#2a2a38;--ink:#eeeef4;--dim:#8a8a9c;
+    --l1:#9a9aa8;--l2:#3d8dff;--l3:#e8b23a;--ok:#2ee6a0;--hot:#ff5c72;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    font-size:15px;-webkit-font-smoothing:antialiased}
+  body{padding:16px 14px 60px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:19px;margin:0 0 3px;letter-spacing:-.01em}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:14px}
+  .tabs{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+  .tabs button{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+    color:var(--dim);font:inherit;font-size:13.5px;padding:9px 13px;cursor:pointer}
+  .tabs button[aria-pressed=true]{border-color:var(--l3);color:var(--l3);background:#241d0f;font-weight:700}
+  .r{display:grid;grid-template-columns:1fr auto;gap:3px 10px;background:var(--panel);
+    border:1px solid var(--line);border-left-width:3px;border-radius:9px;
+    padding:11px 13px;margin-bottom:7px}
+  .r.pick{border-left-color:var(--ok);background:#13201a}
+  .r.maybe{border-left-color:var(--l3);background:#1d1810}
+  .r.L1{border-left-color:var(--l1)} .r.L2{border-left-color:var(--l2)} .r.L3{border-left-color:var(--l3)}
+  .r.pick.L1,.r.pick.L2,.r.pick.L3{border-left-color:var(--ok)}
+  .biz{font-weight:650;font-size:16px;line-height:1.25}
+  .meta{color:var(--dim);font-size:13px;grid-column:1}
+  .tags{text-align:right;font-size:11px;letter-spacing:.06em;white-space:nowrap}
+  .t{display:inline-block;padding:2px 6px;border-radius:4px;margin-left:4px;font-weight:700}
+  .tl{background:#23232c;color:var(--dim)} .tads{background:#12233a;color:var(--l2)}
+  .tok{background:#13291f;color:var(--ok)}
+  .tmaybe{background:#2a2210;color:var(--l3)}
+  .hint{color:var(--l3);font-size:11.5px;grid-column:1;margin-top:2px}
+  .empty{color:var(--dim);text-align:center;padding:40px 0;font-size:14px}
+  .bar{position:fixed;left:0;right:0;bottom:0;background:#12121a;border-top:1px solid var(--line);
+    padding:11px 14px;display:flex;justify-content:space-between;font-size:13px;color:var(--dim)}
+  .bar b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The room</h1>
+  <div class="sub" id="sub">loading…</div>
+  <div class="tabs">
+    <button id="t-pick" aria-pressed="true"  onclick="setF('pick')">Live ad library</button>
+    <button id="t-all"  aria-pressed="false" onclick="setF('all')">Everyone</button>
+    <button id="t-ads"  aria-pressed="false" onclick="setF('ads')">Running ads</button>
+  </div>
+  <div id="list"></div>
+</div>
+<div class="bar"><div id="counts">—</div><div>updates every 5s</div></div>
+
+<script>
+(function(){
+  var k = new URLSearchParams(location.search).get('k') || '';
+  var FEED = "https://bfm-demos.vercel.app/api/eo-feed?mins=300&full=1&k=" + encodeURIComponent(k);
+  var rows = [], filter = 'pick';
+
+  window.setF = function(f){
+    filter = f;
+    ['pick','all','ads'].forEach(function(x){
+      document.getElementById('t-'+x).setAttribute('aria-pressed', x===f);
+    });
+    paint();
+  };
+
+  function paint(){
+    var list = rows.slice();
+    // Not a demo-subject picker any more (the in-room volunteer was cut 09-02 — no
+    // permission, no-pitch event). This now just tells Robb who he's talking to:
+    // which trades in the room have something to find when they run hands-on 1.
+    // Home-services trades first, then professional services, which
+    // are a real maybe rather than a write-off: personal-injury and family firms
+    // advertise hard, corporate and estate practices barely at all. Robb spot-checks
+    // the library before committing one to the stage.
+    if (filter === 'pick') {
+      list = list.filter(function(r){ return r.rich || r.pro; });
+      list.sort(function(a,b){ return (b.rich?1:0) - (a.rich?1:0); });
+    }
+    if (filter === 'ads')  list = list.filter(function(r){ return r.ads; });
+
+    var el = document.getElementById('list');
+    if (!list.length){
+      el.innerHTML = '<div class="empty">' +
+        (rows.length ? 'Nobody in this slice yet.'
+                     : (k ? 'No responses yet — or the key is wrong.' : 'Add ?k=YOUR_KEY to the URL.')) +
+        '</div>';
+      return;
+    }
+    el.innerHTML = list.map(function(r){
+      var tags = '<span class="t tl">' + r.level + '</span>' +
+                 (r.ads ? '<span class="t tads">ADS</span>' : '') +
+                 (r.rich ? '<span class="t tok">' + r.rich.toUpperCase() + '</span>' : '') +
+                 (r.pro ? '<span class="t tmaybe">' + r.pro.toUpperCase() + '</span>' : '');
+      var cls = r.rich ? ' pick' : (r.pro ? ' maybe' : '');
+      return '<div class="r ' + r.level + cls + '">' +
+        '<div class="biz">' + esc(r.business || '—') + '</div>' +
+        '<div class="tags">' + tags + '</div>' +
+        '<div class="meta">' + esc(r.trade || 'trade not given') +
+        (r.name ? ' · ' + esc(r.name) : '') + '</div>' +
+        (r.pro ? '<div class="hint">check their ad library before you commit</div>' : '') +
+        '</div>';
+    }).join('');
+  }
+
+  function esc(s){ return String(s).replace(/[<>&"]/g, function(c){
+    return ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'})[c]; }); }
+
+  function poll(){
+    fetch(FEED,{cache:'no-store'}).then(function(r){ return r.json(); }).then(function(d){
+      if (!d || !d.ok) return;
+      rows = (d.roster || []).slice().reverse();
+      var L = d.levels || {};
+      document.getElementById('sub').textContent =
+        d.total + ' answered · ' + rows.filter(function(r){return r.rich;}).length +
+        ' safe picks · ' + rows.filter(function(r){return !r.rich && r.pro;}).length + ' maybes';
+      document.getElementById('counts').innerHTML =
+        '<b>' + (L.L1||0) + '</b> L1 · <b>' + (L.L2||0) + '</b> L2 · <b>' +
+        (L.L3||0) + '</b> L3 · <b>' + (d.ads||0) + '</b> running ads';
+      paint();
+    }).catch(function(){});
+  }
+  poll(); setInterval(poll, 5000);
+})();
+</script>
+</body>
+</html>

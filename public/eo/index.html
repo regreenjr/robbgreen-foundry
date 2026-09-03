@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>What level are you? — Robb Green</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0e0e13">
+<style>
+  :root{
+    --bg:#0e0e13; --panel:#191922; --line:#2c2c3a; --ink:#f0f0f6; --dim:#9a9aab;
+    --l1:#9a9aa8; --l2:#3d8dff; --l3:#e8b23a; --ok:#2ee6a0; --hot:#ff5c72;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    line-height:1.45;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
+  body{padding:max(20px,env(safe-area-inset-top)) 20px max(28px,env(safe-area-inset-bottom))}
+  .wrap{max-width:520px;margin:0 auto}
+
+  .bar{height:3px;background:#23232f;border-radius:2px;margin-bottom:28px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--l3);border-radius:2px;
+    transition:width .28s cubic-bezier(.4,0,.2,1)}
+
+  .step{display:none;animation:in .22s ease both}
+  .step.on{display:block}
+  @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--l3);
+    margin-bottom:12px;font-weight:600}
+  h1{font-size:29px;line-height:1.15;letter-spacing:-.02em;margin:0 0 12px;font-weight:700}
+  h2{font-size:23px;line-height:1.25;letter-spacing:-.015em;margin:0 0 20px;font-weight:650}
+  p{color:var(--dim);font-size:16px;margin:0 0 20px}
+
+  button.opt{display:block;width:100%;text-align:left;background:var(--panel);
+    border:1px solid var(--line);border-radius:12px;color:var(--ink);font:inherit;
+    font-size:17px;padding:17px 18px;margin-bottom:10px;cursor:pointer;
+    transition:border-color .12s,background .12s}
+  button.opt:active{background:#22222e;border-color:#4a4a60}
+
+  .cta{display:block;width:100%;background:var(--l3);color:#17140b;border:0;border-radius:12px;
+    font:inherit;font-size:18px;font-weight:700;padding:18px;cursor:pointer;margin-top:6px}
+  .cta:disabled{opacity:.5}
+  .ghost{background:none;border:0;color:var(--dim);font:inherit;font-size:15px;
+    padding:14px 0 0;cursor:pointer;display:block;width:100%;text-align:center}
+
+  label{display:block;font-size:13px;letter-spacing:.04em;color:var(--dim);
+    margin:0 0 6px;font-weight:600}
+  input[type=text],input[type=tel],input[type=email]{width:100%;background:#12121a;
+    border:1px solid var(--line);border-radius:10px;color:var(--ink);font:inherit;
+    font-size:17px;padding:14px 15px;margin-bottom:15px}
+  input:focus{outline:none;border-color:var(--l2)}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .pair button{background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    color:var(--ink);font:inherit;font-size:16px;padding:14px;cursor:pointer}
+  .pair button[aria-pressed=true]{border-color:var(--l3);background:#241d0f;color:var(--l3);font-weight:700}
+  .check{display:flex;gap:11px;align-items:flex-start;background:#12121a;
+    border:1px solid var(--line);border-radius:10px;padding:14px 15px;margin:4px 0 18px;cursor:pointer}
+  .check input{width:21px;height:21px;margin:1px 0 0;accent-color:var(--l3);flex:0 0 auto}
+  .check span{font-size:14.5px;color:var(--dim);line-height:1.4}
+  .err{color:var(--hot);font-size:14.5px;margin:0 0 14px;min-height:1px}
+  .fine{color:#6a6a7c;font-size:12.5px;line-height:1.5;margin-top:16px}
+
+  .badge{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;padding:6px 12px;border-radius:6px;margin-bottom:16px}
+  .b1{background:#23232c;color:var(--l1)} .b2{background:#12233a;color:var(--l2)}
+  .b3{background:#2a2210;color:var(--l3)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;margin-bottom:12px}
+  .card .h{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--l3);
+    margin-bottom:8px;font-weight:700}
+  .card .b{font-size:16.5px;color:var(--ink);line-height:1.5}
+  .lvl3 .card .h{color:var(--l3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar"><i id="bar"></i></div>
+
+  <!-- 0 -->
+  <section class="step on" data-step="0">
+    <div class="kicker">EO Phoenix · September 8</div>
+    <h1>Which level are you?</h1>
+    <p>Five questions, about ninety seconds. Nobody is grading you and nobody sees your answers but you — this is so you leave knowing exactly which rung you're standing on, because the next move is different on every one.</p>
+    <button class="cta" onclick="go(1)">Start</button>
+  </section>
+
+  <!-- 1..5 injected -->
+  <section class="step" data-step="1"></section>
+  <section class="step" data-step="2"></section>
+  <section class="step" data-step="3"></section>
+  <section class="step" data-step="4"></section>
+  <section class="step" data-step="5"></section>
+
+  <!-- 6 details -->
+  <section class="step" data-step="6">
+    <div class="kicker">Last bit</div>
+    <h2>Where do I send your playbook?</h2>
+    <label for="f-name">First name</label>
+    <input id="f-name" type="text" autocomplete="given-name" enterkeyhint="next">
+    <label for="f-biz">Business</label>
+    <input id="f-biz" type="text" autocomplete="organization" enterkeyhint="next">
+    <label for="f-trade">What do you do?</label>
+    <input id="f-trade" type="text" placeholder="roofing, HVAC, law firm, e-comm…" enterkeyhint="next">
+    <label>Running Meta or Google ads right now?</label>
+    <div class="pair" style="margin-bottom:16px">
+      <button type="button" id="ads-y" aria-pressed="false" onclick="setAds('yes')">Yes</button>
+      <button type="button" id="ads-n" aria-pressed="false" onclick="setAds('no')">No</button>
+    </div>
+    <label for="f-cell">Mobile</label>
+    <input id="f-cell" type="tel" autocomplete="tel" inputmode="numeric" enterkeyhint="next">
+    <label class="check" for="f-sms">
+      <input id="f-sms" type="checkbox">
+      <span>Text me my level playbook. That's what the number is for — you can reply STOP any time and I'll never sell or share it.</span>
+    </label>
+    <label for="f-email">Email <span style="text-transform:none;letter-spacing:0">(if you'd rather not text)</span></label>
+    <input id="f-email" type="email" autocomplete="email" inputmode="email" enterkeyhint="go">
+    <p class="err" id="err"></p>
+    <button class="cta" id="submit" onclick="send()">Show me my level</button>
+    <p class="fine">Mobile or email — one of the two, so the playbook has somewhere to land.</p>
+  </section>
+
+  <!-- 7 result -->
+  <section class="step" data-step="7" id="result"></section>
+</div>
+
+<script>
+(function(){
+  var API = "https://bfm-demos.vercel.app/api/eo-capture";
+
+  var Q = [
+    { k:'q1', t:'In the last 30 days, have you used an AI tool for anything work-related?',
+      o:[['never','Never'],['once','Once or twice'],['weeks','Most weeks'],['days','Most days']] },
+    { k:'q2', t:'Do you pay for any AI tool?',
+      o:[['no','No'],['one','One'],['two','Two or more']] },
+    { k:'q3', t:'What was the last thing AI actually produced for you?',
+      o:[['advice','Advice or an answer — I did the work myself'],
+         ['asset','A finished thing I used — a page, an ad, a document'],
+         ['tool','A working tool someone else in my business now uses'],
+         ['none','Nothing yet']] },
+    { k:'q4', t:'Is anything AI-driven running in your business while you sleep?',
+      o:[['no','No'],['one','Yes, one thing'],['several','Yes, several']] },
+    { k:'q5', t:'Who set that up?',
+      o:[['me','I did'],['hired','Someone I hired'],['na','Not sure']] }
+  ];
+
+  var A = {}, ads = '', step = 0, sending = false;
+
+  // Q5 only exists if something is actually running. Skipping it saves the majority
+  // of the room a tap, and 90 seconds is the whole budget.
+  function lastStep(){ return (A.q4 === 'one' || A.q4 === 'several') ? 5 : 4; }
+
+  function render(i){
+    var q = Q[i-1], el = document.querySelector('[data-step="'+i+'"]');
+    // No "of N" — the fifth question only exists for people with something already
+    // running, so a total would read "4 of 4" and then hand them a fifth. The bar
+    // carries progress instead.
+    var h = '<div class="kicker">Question '+i+'</div><h2>'+q.t+'</h2>';
+    for (var j=0;j<q.o.length;j++){
+      h += '<button class="opt" onclick="pick(\''+q.k+'\',\''+q.o[j][0]+'\','+i+')">'+q.o[j][1]+'</button>';
+    }
+    el.innerHTML = h;
+  }
+
+  window.pick = function(k,v,i){
+    A[k] = v;
+    go(i === lastStep() ? 6 : i+1);
+  };
+
+  window.go = function(i){
+    if (i >= 1 && i <= 5) render(i);
+    document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('on'); });
+    document.querySelector('[data-step="'+i+'"]').classList.add('on');
+    step = i;
+    document.getElementById('bar').style.width = Math.round((i/7)*100)+'%';
+    window.scrollTo(0,0);
+  };
+
+  window.setAds = function(v){
+    ads = v;
+    document.getElementById('ads-y').setAttribute('aria-pressed', v==='yes');
+    document.getElementById('ads-n').setAttribute('aria-pressed', v==='no');
+  };
+
+  function level(){
+    if (A.q4 === 'one' || A.q4 === 'several') return 'L3';
+    if (A.q3 === 'asset' || A.q3 === 'tool') return 'L2';
+    return 'L1';
+  }
+
+  var COPY = {
+    L1: { badge:'Level 1 · The Googler', cls:'b1',
+      you:'You ask, it answers. You are getting advice — and then you still do all of the work yourself. That is where most of this room is, and it is not a failure. It is just the bottom rung.',
+      next:'Make it hand you something finished. Not a suggestion — an actual asset you can use.',
+      monday:'Paste your last twenty Google reviews into ChatGPT and ask it what your customers are really buying. Twenty minutes. It will surprise you.' },
+    L2: { badge:'Level 2 · The Builder', cls:'b2',
+      you:'You describe, it builds. The work comes back finished — pages, ads, documents. What you do not have yet is anything that runs when you are not watching it.',
+      next:'Put one thing on autopilot. One job, running without you, that you can check on Monday.',
+      monday:'Pull up your competitors’ live ad library — search your trade and your city, not their company name — and write down the three ads that have been running the longest. Those are the ones making money.' },
+    L3: { badge:'Level 3 · The Architect', cls:'b3',
+      you:'You design systems and AI runs them. You are in the fraction of a percent who have work happening without a human starting it. The ceiling here is not capability — it is memory.',
+      next:'A Growth OS: one place where every correction, every result and every customer signal accumulates, so the machine gets smarter instead of starting from zero every time.',
+      monday:'Start the customer-truth file. One document that reads your calls, reviews and cancellations and tells you every Monday what changed — with receipts, not vibes.' }
+  };
+
+  function show(lv){
+    var c = COPY[lv] || COPY.L1;
+    document.getElementById('result').innerHTML =
+      '<div class="badge '+c.cls+'">'+c.badge+'</div>' +
+      '<h2 style="margin-bottom:18px">Here’s where you’re standing.</h2>' +
+      '<div class="card"><div class="b" style="color:#c8c8d4">'+c.you+'</div></div>' +
+      '<div class="card"><div class="h">Your next rung</div><div class="b">'+c.next+'</div></div>' +
+      '<div class="card"><div class="h">Do this Monday</div><div class="b">'+c.monday+'</div></div>' +
+      '<p class="fine">Keep this screen up — Robb is going to ask for hands by level in a minute. Your full playbook is on its way.</p>';
+    go(7);
+  }
+
+  window.send = function(){
+    if (sending) return;
+    var err = document.getElementById('err');
+    var v = function(id){ return document.getElementById(id).value.trim(); };
+    var biz = v('f-biz'), cell = v('f-cell').replace(/\D/g,''), email = v('f-email');
+    if (!biz) { err.textContent = 'Business name, please.'; return; }
+    if (cell.length < 10 && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      err.textContent = 'Add a mobile number or an email so the playbook has somewhere to land.'; return;
+    }
+    err.textContent = '';
+    sending = true;
+    var btn = document.getElementById('submit');
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    var payload = {
+      name: v('f-name'), business: biz, trade: v('f-trade'), ads: ads,
+      cell: cell, email: email,
+      smsConsent: document.getElementById('f-sms').checked,
+      q1:A.q1||'', q2:A.q2||'', q3:A.q3||'', q4:A.q4||'', q5:A.q5||''
+    };
+
+    // text/plain on purpose: a JSON content-type triggers a CORS preflight, and this
+    // page exists for one 90-second window with the whole room submitting at once.
+    fetch(API, { method:'POST', headers:{'Content-Type':'text/plain;charset=UTF-8'},
+                 body: JSON.stringify(payload) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }); })
+      .then(function(d){
+        if (d && d.error) { err.textContent = d.error; btn.disabled=false;
+          btn.textContent='Show me my level'; sending=false; return; }
+        show((d && d.level) || level());
+      })
+      .catch(function(){
+        // Their result is theirs regardless of whether the network cooperated. The
+        // room must never see a person stuck on a spinner during the one exercise.
+        show(level());
+      });
+  };
+})();
+</script>
+</body>
+</html>
